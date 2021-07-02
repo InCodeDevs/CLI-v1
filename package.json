@@ -2,10 +2,9 @@
   "name": "incode",
   "version": "1.0.0",
   "description": "The InCode Programming Language",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "",
-    "start": ""
+    "start": "tsc --project . && node ."
   },
   "author": "Ben Siebert, Lukas Birke",
   "license": "GPL-3.0-only"
