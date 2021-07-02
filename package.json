@@ -4,7 +4,9 @@
   "description": "The InCode Programming Language",
   "main": "dist/InCode.js",
   "scripts": {
-    "start": "tsc --project . && node ."
+    "start": "npm run buildTS && node .",
+    "buildTS": "tsc --project .",
+    "buildWin": "npm run buildTS && nexe . -o out/incode.exe -t windows -r src/**/*.json"
   },
   "author": "Ben Siebert, Lukas Birke",
   "license": "GPL-3.0-only",
