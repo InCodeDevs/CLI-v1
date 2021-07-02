@@ -1,0 +1,12 @@
+{
+  "name": "incode",
+  "version": "1.0.0",
+  "description": "The InCode Programming Language",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "",
+    "start": ""
+  },
+  "author": "Ben Siebert, Lukas Birke",
+  "license": "GPL-3.0-only"
+}
