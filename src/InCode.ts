@@ -6,6 +6,13 @@
 import {Logger} from './util/Logger';
 import {OptionParser} from "./util/OptionParser";
 import {ErrorCodes} from "./util/ErrorCodes";
+import {WebCompiler} from "./compiler/WebCompiler";
+import {StringUtil} from "./util/StringUtil";
+import * as fs from "fs";
+import * as path from "path";
+
+// fix __dirname (nexe issue #405)
+let DIRNAME = path.dirname(process.execPath)
 
 let logger: Logger = new Logger();
 let optionParser: OptionParser = new OptionParser(process.argv);
@@ -18,6 +25,8 @@ logger.setLogStatus(
     !optionParser.hasOption("disableLogWarnings"),
     !optionParser.hasOption("disableLogErrors")
 )
+
+WebCompiler.logger = logger;
 
 if (optionParser.hasOption("help")) {
     console.log("\n" +
@@ -33,14 +42,22 @@ if (optionParser.hasOption("help")) {
         "\n" +
         "Made by Ben Siebert and Lukas Birke\n" +
         "\n")
-    console.log("incode [options] <file>")
+    console.log("incode [options] \"<absolutePathToFile>\"")
     process.exit(0)
 } else if (optionParser.hasOption("version")) {
     console.log("v1.0.0")
     process.exit(0)
 }
 
-if(process.argv[process.argv.length - 1].startsWith(optionParser.optionStart) || process.argv.length == 2){
+if (process.argv[process.argv.length - 1].startsWith(optionParser.optionStart) || process.argv.length == 2) {
     errorCodes.prettyPrint(0);
     process.exit(1)
+} else {
+    let p: string = "";
+    for (let i = 2; i < process.argv.length; i++) {
+        p += process.argv[i];
+        if((i + 1) < process.argv.length)
+            p += " "
+    }
+    WebCompiler.compile(fs.readFileSync(process.argv[process.argv.length - 1]).toString())
 }

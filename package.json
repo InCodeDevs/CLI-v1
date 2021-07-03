@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npm run buildTS && node .",
     "buildTS": "tsc --project .",
-    "buildWin": "npm run buildTS && nexe . -o out/incode.exe -t windows -r src/**/*.json"
+    "buildWin": "npm run buildTS && nexe . --build --output incode.exe",
+    "test": "npm run buildWin && incode.exe examples\\web.ic"
   },
   "author": "Ben Siebert, Lukas Birke",
   "license": "GPL-3.0-only",
