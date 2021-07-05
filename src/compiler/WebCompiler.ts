@@ -73,6 +73,8 @@ export class WebCompiler {
         // create an empty array for ignored lines
         let ignoredLines = []
 
+        let rootCodeBlocks = [];
+
         // loop through all expressions
         for (let i = 0; i < Object.keys(expressions).length; i++) {
 
@@ -89,50 +91,65 @@ export class WebCompiler {
 
                     if (rootCodeBlockPosition === 0) {
 
-                        let exs: string[] = this.getEXS(rootCodeBlockPosition, expressions, i)
+                        rootCodeBlocks.push({
+                            x: expression,
+                            i: i
+                        })
 
-                        if (exs.length == 0) {
-                            codeBlocks.push({
-                                line: i,
-                                position: rootCodeBlockPosition,
-                                statement: expression,
-                                innerStatements: []
-                            })
-                        } else {
-
-                            let block = {
-                                line: i,
-                                position: rootCodeBlockPosition,
-                                statement: expression,
-                                innerStatements: []
-                            };
-
-                            for (let j = 0; j < exs.length; j++) {
-                                if (this.getCodeBlockPosition(exs[j]) > rootCodeBlockPosition) {
-                                    if (this.getCodeBlockPosition(exs[j]) - 1 === rootCodeBlockPosition) {
-                                        block.innerStatements.push({
-                                            line: i,
-                                            position: this.getCodeBlockPosition(exs[j]),
-                                            statement: exs[j],
-                                            innerStatements: []
-                                        })
-                                    } else {
-                                        if (block.innerStatements.length > 0) {
-                                            console.log(block.innerStatements.length)
-                                            block.innerStatements[block.innerStatements.length - 1].innerStatements.push({
-                                                line: i,
-                                                position: this.getCodeBlockPosition(exs[j]),
-                                                statement: exs[j],
-                                                innerStatements: []
-                                            })
-                                        }
-                                    }
+                        const processNextExpressions = (): any[] => {
+                            let ex = [];
+                            for (let j = i + 1; j < expressions.length; j++) {
+                                let x = expressions[j];
+                                if (this.getCodeBlockPosition(x) <= rootCodeBlockPosition) {
+                                    break
                                 } else {
-                                    break;
+                                    ex.push({
+                                        statement: x,
+                                        line: j,
+                                        blockPosition: this.getCodeBlockPosition(x),
+                                        innerStatements: []
+                                    })
                                 }
                             }
-                            codeBlocks.push(block)
+                            return ex
                         }
+
+                        let codeBlock = {
+                            statement: expression,
+                            line: i,
+                            blockPosition: rootCodeBlockPosition,
+                            innerStatements: []
+                        }
+
+                        let _codeBlock = codeBlock;
+
+                        processNextExpressions().forEach(x => {
+                            if (x.blockPosition > _codeBlock.blockPosition) {
+                                if (_codeBlock.innerStatements.length != 0) {
+                                    if (_codeBlock.innerStatements[_codeBlock.innerStatements.length - 1].blockPosition < x.blockPosition) {
+                                        if (_codeBlock.innerStatements[_codeBlock.innerStatements.length - 1].blockPosition + 1 === x.blockPosition) {
+                                            _codeBlock.innerStatements[_codeBlock.innerStatements.length - 1].innerStatements.push(x)
+                                        } else {
+                                            let _codeBlockBackUp = _codeBlock;
+                                            for (let j = _codeBlock.innerStatements[_codeBlock.innerStatements.length - 1].blockPosition; j < x.blockPosition; j++) {
+                                                _codeBlock = _codeBlock.innerStatements[_codeBlock.innerStatements.length - 1];
+                                            }
+                                            _codeBlock.innerStatements.push(x)
+                                            _codeBlock = Object.assign({}, _codeBlock, _codeBlockBackUp)
+                                        }
+                                    } else {
+                                        _codeBlock.innerStatements.push(x)
+                                    }
+                                } else {
+                                    _codeBlock.innerStatements.push(x)
+                                }
+                            }
+                            codeBlock = _codeBlock
+                            _codeBlock = codeBlock
+                        });
+
+                        codeBlocks.push(codeBlock)
+
                     }
                 }
             }

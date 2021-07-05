@@ -1,12 +1,11 @@
-// Das ist ein Kommentar
-// Erstellt eine Variable und nennt sie x Außerdem bin ich dumm und jaaa
-Erstelle x
-Wenn x größer als 2 ist dann:
-	Erstelle y
-	Setze y auf 2
-	Wenn y größer als x ist dann:
-		Erstelle z
-		Setze z auf 2
-		Wenn z größer als y ist dann:
+Erstelle x [y]
+Wenn x größer als 2 ist dann: [y]
+	Erstelle y [y]
+	Setze y auf 2 [y]
+	Wenn y größer als x ist dann: [y]
+		Erstelle z [y]
+		Setze z auf 2 [y]
+		Wenn z größer als y ist dann: [n]
 			Erstelle b
 			Setze b auf 2
+Erstelle b2 [y]
