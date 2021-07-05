@@ -157,15 +157,48 @@ export class WebCompiler {
 
         // compile each codeBlock
         codeBlocks.forEach(codeBlock => {
-            console.log(JSON.stringify(codeBlock))
+            result += this.compileCodeBlock(codeBlock)
+
         })
+
+        console.log(result)
 
         // return the final javascript code
         return result
     }
 
+    protected static compileCodeBlock(codeBlock: any): string {
+        let r = ""
+
+        r += this.compileStatement(codeBlock.statement);
+
+        if (codeBlock.innerStatements.length > 0) {
+            r += "{\n"
+
+            codeBlock.innerStatements.forEach(_block => {
+                r += this.compileCodeBlock(_block)
+            })
+
+            r += "}\n"
+        }
+
+        return r
+    }
+
+    protected static compileStatement(statement: string): string {
+        let r = this.trimStatement(statement);
+        return r + "\n"
+    }
+
+
     protected static getCodeBlockPosition(expression: string): number {
         const re = /\t/g
         return ((expression || '').match(re) || []).length
     }
+
+    protected static trimStatement(statement: string): string {
+        statement = statement.trim()
+        return statement
+    }
+
 }
