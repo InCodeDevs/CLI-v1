@@ -51,11 +51,12 @@ export class WebCompiler {
             "kleiner": "<",
             "größer": ">",
             "kleiner-gleich": "<=",
-            "gößer-gleich": ">="
+            "größer-gleich": ">="
         },
         events: {
             "gedrückt": "onclick",
-            "berüht": "onmouseover"
+            "berührt": "onmouseover",
+            "nicht-berührt": "onmouseleave"
         }
     }
 
@@ -182,7 +183,7 @@ export class WebCompiler {
             case "wenn":
                 if (args.length === 5) {
                     if (this.options.operators[args[2]]) {
-                        r = "if(" + args[1] + " " + this.options.operators[args[2].toLowerCase()] + " " + args[4] + ")"
+                        r = "if(" + args[1] + " " + this.options.operators[args[2].toLowerCase()] + " " + args[3] + ")"
                     } else {
                         this.errorCodes.prettyPrint(5)
                     }
@@ -224,6 +225,13 @@ export class WebCompiler {
                     } else {
                         this.errorCodes.prettyPrint(3)
                     }
+                } else {
+                    this.errorCodes.prettyPrint(2)
+                }
+                break;
+            case "frage":
+                if (args.length >= 8) {
+                    r = args[args.length - 1] + " = prompt(" + this.getArgsInRange(args, 1, args.length - 7) + ")"
                 } else {
                     this.errorCodes.prettyPrint(2)
                 }

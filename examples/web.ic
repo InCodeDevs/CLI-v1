@@ -1,9 +1,24 @@
-Erstelle meinKnopf als Knopf
-Setze den Text von meinKnopf auf "Lol"
+Erstelle titel als Überschrift
 
-Wenn meinKnopf gedrückt wird rufe meinKnopfWirdGedrückt auf
+Setze die Farbe von titel auf grün
+Setze den Text von titel auf "Ben"
 
-Erstelle meinKnopfWirdGedrückt als Methode
-	Gib "Hallo Welt" in der Dialogbox aus
+Wenn titel berührt wird führe myFunc1 aus
+Wenn titel nicht-berührt wird führe myFunc1_1 aus
 
-Füge meinKnopf zum Bildschirm hinzu
+Erstelle myFunc1 als Methode
+	Setze den Text von titel auf "Lukas"
+
+Erstelle myFunc1_1 als Methode
+	Setze den Text von titel auf "Ben"
+
+Erstelle x1 als Knopf
+Setze den Text von x1 auf "Test"
+
+Wenn x1 gedrückt wird führe myFunc2 aus
+
+Erstelle myFunc2 als Methode
+	Gib "InCode 2021!" in der Dialogbox aus
+
+Füge titel zum Bildschirm hinzu
+Füge x1 zum Bildschirm hinzu
