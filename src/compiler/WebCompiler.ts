@@ -108,7 +108,7 @@ export class WebCompiler {
                         if (this.options.creatable[args[3].toLowerCase()]) {
                             r = "let " + args[1] + " = document.createElement('" + this.options.creatable[args[3].toLowerCase()] + "')"
                         } else {
-                            if (args[3].toLowerCase() === 'methode:') {
+                            if (args[3].toLowerCase() === 'methode:' || args[3].toLowerCase() === 'methode') {
                                 r = "function " + args[1] + "()"
                             } else {
                                 this.errorCodes.prettyPrint(3)
@@ -190,7 +190,7 @@ export class WebCompiler {
                     if (args.length === 7) {
                         // event listeners
                         if (this.options.events[args[2].toLowerCase()]) {
-                            r = args[1] + ".addEventListener('" + this.options.events[args[2].toLowerCase()] + "', " + args[5] + ")"
+                            r = args[1] + ".setAttribute('" + this.options.events[args[2].toLowerCase()] + "', '" + args[5] + "()')"
                         } else {
                             console.log(args[2])
                             this.errorCodes.prettyPrint(6)
@@ -201,18 +201,31 @@ export class WebCompiler {
                 }
                 break;
             case "sonst":
-                if(args.length === 1){
+                if (args.length === 1) {
                     r = "else"
-                }else {
-                    if(args.length === 6){
+                } else {
+                    if (args.length === 6) {
                         if (this.options.operators[args[3]]) {
                             r = "else if(" + args[2] + " " + this.options.operators[args[3].toLowerCase()] + " " + args[4] + ")";
                         } else {
                             this.errorCodes.prettyPrint(5)
                         }
-                    }else {
+                    } else {
                         this.errorCodes.prettyPrint(2)
                     }
+                }
+                break;
+            case "gib":
+                if (args.length >= 6) {
+                    if (args[args.length - 2].toLowerCase() === "konsole") {
+                        r = "console.log(" + this.getArgsInRange(args, 1, args.length - 4) + ")"
+                    } else if (args[args.length - 2].toLowerCase() === "dialogbox") {
+                        r = "alert(" + this.getArgsInRange(args, 1, args.length - 4) + ")"
+                    } else {
+                        this.errorCodes.prettyPrint(3)
+                    }
+                } else {
+                    this.errorCodes.prettyPrint(2)
                 }
                 break;
             default:

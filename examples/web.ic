@@ -1,66 +1,9 @@
-Erstelle x
-Erstelle z2 als Knopf
-Erstelle z3 als Knopf
-Setze die Farbe von z2 auf Schwarz
-Setze den Text von z2 auf "Test"
-Füge z3 zu z2 hinzu
-Füge z2 zum Bildschirm hinzu
-Wenn x größer 2 ist
-	Erstelle y
-	Setze den Wert von y auf "Hallo ich bin Ben"
-	Wenn y größer x ist
-		Erstelle z
-		Setze den Wert von z auf 2
-		Wenn z größer y ist
-			Erstelle b
-			Setze den Wert von b auf 2
-			Wenn b größer z ist
-				Erstelle lol
-				Setze den Wert von lol auf 4
-Wenn b2 kleiner y ist
-	Erstelle z
-Sonst wenn b2 größer y ist
-	Erstelle u
-Sonst
-	Erstelle n
+Erstelle meinKnopf als Knopf
+Setze den Text von meinKnopf auf "Lol"
 
-Erstelle b2
-Rufe die Methode x1 auf
+Wenn meinKnopf gedrückt wird rufe meinKnopfWirdGedrückt auf
 
-Erstelle x1 als Methode:
-	Setze den Wert von x auf "Hallo Welt"
+Erstelle meinKnopfWirdGedrückt als Methode
+	Gib "Hallo Welt" in der Dialogbox aus
 
-Wenn z2 gedrückt wird rufe x1 auf
-
-Wiederhole 10 mal:
-	Erstelle u
-
-Wiederhole solange x kleiner y ist:
-	Erstelle z
-
-// Setze 	den 	Text	von 	x 	auf 	2
-// [0]	[1]	[2]	[3]	[4]	[5]	[6]
-
-// Rufe	die 	Methode	x1	auf
-// [0]	[1]	[2]	[3]	[4]
-
-// Füge	x	zum	Bildschirm		hinzu
-// [0]	[1]	[2]	[3]		[4]
-
-// Wiederhole	10	mal
-// [0]		[1]	[2]
-
-// Wiederhole 	solange	x	kleiner	y	ist
-// [0]		[1]	[2]	[3]	[4]	[5]
-
-// Wenn 		x	kleiner	y	ist
-// [0]		[1]	[2]	[3]	[4]
-
-// Wenn		x	gedrückt	wird	rufe	x1	auf
-// [0]		[1]	[2]	[3]	[4]	[5]	[6]
-
-// Sonst
-// [0]
-
-// Sonst 	wenn	x	kleiner	y	ist
-// [0]	[1]	[2]	[3]	[4]	[5]
+Füge meinKnopf zum Bildschirm hinzu
