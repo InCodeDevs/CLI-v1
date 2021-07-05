@@ -95,6 +95,8 @@ export class WebCompiler {
     }
 
     protected static compileStatement(statement: string): string {
+        if(statement.startsWith("@"))
+            return statement.slice(statement.indexOf("@") + 2, statement.length)
         let r = this.trimStatement(statement);
         let args = r.split(" ");
 
@@ -181,9 +183,9 @@ export class WebCompiler {
                 }
                 break;
             case "wenn":
-                if (args.length === 5) {
+                if (args.length >= 5 && args[3] !== 'wird') {
                     if (this.options.operators[args[2]]) {
-                        r = "if(" + args[1] + " " + this.options.operators[args[2].toLowerCase()] + " " + args[3] + ")"
+                        r = "if(" + args[1] + " " + this.options.operators[args[2].toLowerCase()] + " " + this.getArgsInRange(args, 3, args.length - 1) + ")"
                     } else {
                         this.errorCodes.prettyPrint(5)
                     }
@@ -231,7 +233,7 @@ export class WebCompiler {
                 break;
             case "frage":
                 if (args.length >= 8) {
-                    r = args[args.length - 1] + " = prompt(" + this.getArgsInRange(args, 1, args.length - 7) + ")"
+                    r = args[args.length - 1] + " = prompt(" + this.getArgsInRange(args, 1, args.length - 6) + ")"
                 } else {
                     this.errorCodes.prettyPrint(2)
                 }

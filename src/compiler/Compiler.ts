@@ -30,7 +30,7 @@ export class Compiler {
             // get the current expression
             let expression = expressions[i]
 
-            if (!expression.startsWith("//")) {
+            if (!expression.startsWith("//") && !expression.startsWith("@")) {
 
                 // check if the expression is not \r
                 if (expression != "\r" && !ignoredLines.includes(i)) {
@@ -100,6 +100,15 @@ export class Compiler {
                         codeBlocks.push(codeBlock)
 
                     }
+                }
+            } else {
+                if(expression.startsWith("@")){
+                    codeBlocks.push({
+                        statement: expression,
+                        line: i,
+                        blockPosition: this.getCodeBlockPosition(expression),
+                        innerStatements: []
+                    })
                 }
             }
         }
