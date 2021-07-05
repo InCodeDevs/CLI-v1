@@ -9,10 +9,36 @@ import {Logger} from "./Logger";
 
 export class ErrorCodes {
 
+    private baseHelpURL = "http://incode.senos.xyz/help/e/"
+
     private codes = {
         "ic-0": {
             description: "No file was provided",
-            helpLink: "//incode.senos.xyz/help/e/ic-0"
+            helpLink: `${this.baseHelpURL}ic-0`
+        },
+        "ic-1": {
+            description: "Keyword not found",
+            helpLink: `${this.baseHelpURL}ic-1`
+        },
+        "ic-2": {
+            description: "Word expected",
+            helpLink: `${this.baseHelpURL}ic-2`
+        },
+        "ic-3": {
+            description: "Type not found",
+            helpLink: `${this.baseHelpURL}ic-3`
+        },
+        "ic-4": {
+            description: "Value not found",
+            helpLink: `${this.baseHelpURL}ic-4`
+        },
+        "ic-5": {
+            description: "Operator not valid",
+            helpLink: `${this.baseHelpURL}ic-5`
+        },
+        "ic-6": {
+            description: "Event not valid",
+            helpLink: `${this.baseHelpURL}ic-6`
         }
     }
 
@@ -26,5 +52,6 @@ export class ErrorCodes {
 
     prettyPrint(code: number){
         console.log("error: ic-" + code + ": " + this.getDescription("ic-" + code) + ". please visit " + this.getHelpLink("ic-" + code) + " for help")
+        process.exit(1)
     }
 }
