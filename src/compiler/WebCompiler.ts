@@ -164,26 +164,6 @@ export class WebCompiler {
         return result
     }
 
-    public static getEXS(rootCodeBlockPosition: number, expressions: string[], i: number): string[] {
-        let exs: string[] = []
-        for (let j = i + 1; j < expressions.length; j++) {
-            if (expressions[j]) {
-                if (this.getCodeBlockPosition(expressions[j]) > rootCodeBlockPosition) {
-                    exs.push(expressions[j])
-                } else {
-                    break
-                }
-            } else {
-                break
-            }
-        }
-        return exs
-    }
-
-    public static compileStatement(statement: string): string {
-        return ""
-    }
-
     protected static getCodeBlockPosition(expression: string): number {
         const re = /\t/g
         return ((expression || '').match(re) || []).length
