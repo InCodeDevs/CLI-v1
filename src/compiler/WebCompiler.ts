@@ -39,12 +39,47 @@ export class WebCompiler {
                 },
                 append: ""
             },
+            "hinterdrungfarbe": {
+                name: "backgroundColor",
+                type: "style",
+                values: {
+                    "schwarz": "\"black\"",
+                    "weiß": "\"white\"",
+                    "blau": "\"blue\"",
+                    "grün": "\"lime\"",
+                    "gelb": "\"yellow\"",
+                    "grau": "\"#333\""
+                },
+                append: ""
+            },
             "text": {
                 name: "innerText",
                 type: "attribute",
                 useSetAttribute: false,
                 append: ""
+            },
+            "identifikation": {
+                name: "id",
+                type: "attribute",
+                useSetAttribute: false,
+                append: ""
+            },
+            "schriftgröße": {
+                name: "fontSize",
+                type: "style",
+                append: "px"
+            },
+            "position": {
+                name: "position",
+                type: "style",
+                values: {
+                    "absolut": "absolute",
+                    "fest": "fixed",
+                    "relativ": "relative"
+                },
+                append: ""
             }
+
         },
         operators: {
             "gleich": "==",
@@ -130,18 +165,18 @@ export class WebCompiler {
                         if (this.options.settable[args[2].toLowerCase()].type === 'style') {
                             if (this.options.settable[args[2].toLowerCase()].values) {
                                 if (this.options.settable[args[2].toLowerCase()].values[args[6].toLocaleLowerCase()]) {
-                                    r = args[4] + ".style." + this.options.settable[args[2].toLowerCase()].name + " = " + this.options.settable[args[2].toLowerCase()].values[args[6].toLowerCase()];
+                                    r = args[4] + ".style." + this.options.settable[args[2].toLowerCase()].name + " = \"" + this.options.settable[args[2].toLowerCase()].values[args[6].toLowerCase()] + this.options.settable[args[2].toLowerCase()].append + "\"";
                                 } else {
                                     this.errorCodes.prettyPrint(4)
                                 }
                             } else {
-                                r = args[4] + ".style." + this.options.settable[args[2].toLowerCase()].name + " = " + ""
+                                r = args[4] + ".style." + this.options.settable[args[2].toLowerCase()].name + " = \"" + this.getArgsInRange(args, 6, args.length) + this.options.settable[args[2].toLowerCase()].append + "\""
                             }
                         } else if (this.options.settable[args[2].toLowerCase()].type === 'attribute') {
                             if (this.options.settable[args[2].toLowerCase()].useSetAttribute) {
                                 r = args[4] + ".setAttribute(\"" + this.options.settable[args[2].toLowerCase()].name + "\", \"" + this.getArgsInRange(args, 6, args.length) + "\");"
                             } else {
-                                r = args[4] + "." + this.options.settable[args[2].toLowerCase()].name + " = " + this.getArgsInRange(args, 6, args.length) + ""
+                                r = args[4] + "." + this.options.settable[args[2].toLowerCase()].name + " = " + this.getArgsInRange(args, 6, args.length) + this.options.settable[args[2].toLowerCase()].append
                             }
                         }
                     } else {
