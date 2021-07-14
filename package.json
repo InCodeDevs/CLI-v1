@@ -6,10 +6,10 @@
   "scripts": {
     "start": "npm run buildTS && node .",
     "buildTS": "tsc --project .",
-    "buildWin": "npm run buildTS && nexe . --build --output incode.exe",
+    "build": "npm run buildTS && nexe . --build --output incode",
     "test": "npm run buildWin && incode.exe examples\\web.ic"
   },
-  "author": "Ben Siebert, Lukas Birke",
+  "author": "The InCode Developers",
   "license": "GPL-3.0-only",
   "devDependencies": {
     "@types/node": "^15.14.0"

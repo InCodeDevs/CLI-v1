@@ -23,7 +23,11 @@ export class WebCompiler {
             "eingabefeld": "input",
             "tabelle": "table",
             "zeile": "tr",
-            "spalte": "tb"
+            "spalte": "tb",
+            "zeilenumbruch": "br",
+            "video": "video",
+            "ton": "audio",
+            "fenster": "iframe"
         },
         settable: {
             "farbe": {
@@ -35,7 +39,14 @@ export class WebCompiler {
                     "blau": "blue",
                     "grün": "lime",
                     "gelb": "yellow",
-                    "grau": "#333"
+                    "rot": "red",
+                    "grau": "gray",
+                    "hellgrau": "lightgray",
+                    "rosa": "pink",
+                    "pink": "pink",
+                    "lila": "violet",
+                    "violet": "violet",
+                    "orange": "orange"
                 },
                 append: ""
             },
@@ -48,7 +59,14 @@ export class WebCompiler {
                     "blau": "blue",
                     "grün": "lime",
                     "gelb": "yellow",
-                    "grau": "#333"
+                    "rot": "red",
+                    "grau": "gray",
+                    "hellgrau": "lightgray",
+                    "rosa": "pink",
+                    "pink": "pink",
+                    "lila": "violet",
+                    "violet": "violet",
+                    "orange": "orange"
                 },
                 append: ""
             },
@@ -58,7 +76,120 @@ export class WebCompiler {
                 useSetAttribute: false,
                 append: ""
             },
-            "identifikation": {
+            "textdekoration": {
+                name: "text-decoration",
+                type: "style",
+                values: {
+                    "unterstrichen": "underline",
+                    "überstrichen": "overline",
+                    "durchgestrichen": "line-through",
+                    "blink": "blink",
+                    "nichts": "none",
+                    "unterstrichen-überstrichen": "underline overline"
+                },
+                append: ""
+            },
+            "textausrichtung": {
+                name: "text-align",
+                type: "style",
+                values: {
+                    "links": "left",
+                    "rechts": "right",
+                    "start": "start",
+                    "ende": "end",
+                    "mitte": "center"
+                },
+                append: ""
+            },
+            "schriftstil": {
+                name: "text-decoration",
+                type: "style",
+                values: {
+                    "unterstrichen": "underline",
+                    "überstrichen": "overline",
+                    "durchgestrichen": "line-through",
+                    "blink": "blink",
+                    "nichts": "none",
+                    "unterstrichen-überstrichen": "underline overline"
+                },
+                append: ""
+            },
+            "schriftbreite": {
+                name: "fontWeight",
+                type: "style",
+                values: {
+                    "fett": "bold",
+                    "normal": "normal",
+                    "nichts": "normal"
+                }
+            },
+            "schriftart": {
+                name: "font-family",
+                type: "style",
+                useSetAttribute: false,
+                append: ""
+            },
+            "abstand-oben": {
+                name: "margin-top",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "abstand-rechts": {
+                name: "margin-right",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "abstand-unten": {
+                name: "margin-bottom",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "abstand-links": {
+                name: "margin-left",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "abstand": {
+                name: "margin",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "innerer-abstand-oben": {
+                name: "padding-top",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "innerer-abstand-rechts": {
+                name: "padding-right",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "innerer-abstand-unten": {
+                name: "padding-bottom",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "innerer-abstand-links": {
+                name: "padding-left",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "innerer-abstand": {
+                name: "padding",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "id": {
                 name: "id",
                 type: "attribute",
                 useSetAttribute: false,
@@ -69,6 +200,36 @@ export class WebCompiler {
                 type: "style",
                 append: "px"
             },
+            "breite": {
+              name: "witdh",
+              type: "style",
+              useSetAttribute: false,
+              append: "px"
+            },
+            "höhe": {
+                name: "height",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "rahmenbreite": {
+                name: "witdh",
+                type: "attribute",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "rahmenhöhe": {
+                name: "height",
+                type: "attribute",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "quelle": {
+                name: "src",
+                type: "attribute",
+                useSetAttribute: false,
+                append: ""
+            },
             "position": {
                 name: "position",
                 type: "style",
@@ -78,8 +239,223 @@ export class WebCompiler {
                     "relativ": "relative"
                 },
                 append: ""
+            },
+            "umrandungsbreite-oben": {
+                name: "border-top-width",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "umrandungsbreite-rechts": {
+                name: "border-right-width",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "umrandungsbreite-unten": {
+                name: "border-bottom-width",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "umrandungsbreite-links": {
+                name: "border-left-width",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "umrandungsbreite": {
+                name: "border-width",
+                type: "style",
+                useSetAttribute: false,
+                append: "px"
+            },
+            "umrandungsstil-oben": {
+                name: "border-top-style",
+                type: "style",
+                values: {
+                    "nichts": "none",
+                    "versteckt": "hidden",
+                    "gepunktet": "dotted",
+                    "gestrichelt": "dashed",
+                    "solide": "solid",
+                    "doppelt": "double",
+                    "gerillt": "groove",
+                    "3d": "ridge",
+                    "eingesetzt": "inset",
+                    "draufgelegt": "outset"
+                }
+            },
+            "umrandungsstil-rechts": {
+                name: "border-right-style",
+                type: "style",
+                values: {
+                    "nichts": "none",
+                    "versteckt": "hidden",
+                    "gepunktet": "dotted",
+                    "gestrichelt": "dashed",
+                    "solide": "solid",
+                    "doppelt": "double",
+                    "gerillt": "groove",
+                    "3d": "ridge",
+                    "eingesetzt": "inset",
+                    "draufgelegt": "outset"
+                }
+            },
+            "umrandungsstil-unten": {
+                name: "border-bottom-style",
+                type: "style",
+                values: {
+                    "nichts": "none",
+                    "versteckt": "hidden",
+                    "gepunktet": "dotted",
+                    "gestrichelt": "dashed",
+                    "solide": "solid",
+                    "doppelt": "double",
+                    "gerillt": "groove",
+                    "3d": "ridge",
+                    "eingesetzt": "inset",
+                    "draufgelegt": "outset"
+                }
+            },
+            "umrandungsstil-links": {
+                name: "border-left-style",
+                type: "style",
+                values: {
+                    "nichts": "none",
+                    "versteckt": "hidden",
+                    "gepunktet": "dotted",
+                    "gestrichelt": "dashed",
+                    "solide": "solid",
+                    "doppelt": "double",
+                    "gerillt": "groove",
+                    "3d": "ridge",
+                    "eingesetzt": "inset",
+                    "draufgelegt": "outset"
+                }
+            },
+            "umrandungsstil": {
+                name: "border-style",
+                type: "style",
+                values: {
+                    "nichts": "none",
+                    "versteckt": "hidden",
+                    "gepunktet": "dotted",
+                    "gestrichelt": "dashed",
+                    "solide": "solid",
+                    "doppelt": "double",
+                    "gerillt": "groove",
+                    "3d": "ridge",
+                    "eingesetzt": "inset",
+                    "draufgelegt": "outset"
+                }
+            },
+            "umrandungsfarbe-oben": {
+                name: "border-top-color",
+                type: "style",
+                values: {
+                    "schwarz": "black",
+                    "weiß": "white",
+                    "blau": "blue",
+                    "grün": "lime",
+                    "gelb": "yellow",
+                    "rot": "red",
+                    "grau": "gray",
+                    "hellgrau": "lightgray",
+                    "rosa": "pink",
+                    "pink": "pink",
+                    "lila": "violet",
+                    "violet": "violet",
+                    "orange": "orange"
+                },
+                append: ""
+            },
+            "umrandungsfarbe-rechts": {
+                name: "border-right-color",
+                type: "style",
+                values: {
+                    "schwarz": "black",
+                    "weiß": "white",
+                    "blau": "blue",
+                    "grün": "lime",
+                    "gelb": "yellow",
+                    "rot": "red",
+                    "grau": "gray",
+                    "hellgrau": "lightgray",
+                    "rosa": "pink",
+                    "pink": "pink",
+                    "lila": "violet",
+                    "violet": "violet",
+                    "orange": "orange"
+                },
+                append: ""
+            },
+            "umrandungsfarbe-unten": {
+                name: "border-bottom-color",
+                type: "style",
+                values: {
+                    "schwarz": "black",
+                    "weiß": "white",
+                    "blau": "blue",
+                    "grün": "lime",
+                    "gelb": "yellow",
+                    "rot": "red",
+                    "grau": "gray",
+                    "hellgrau": "lightgray",
+                    "rosa": "pink",
+                    "pink": "pink",
+                    "lila": "violet",
+                    "violet": "violet",
+                    "orange": "orange"
+                },
+                append: ""
+            },
+            "umrandungsfarbe-links": {
+                name: "border-left-color",
+                type: "style",
+                values: {
+                    "schwarz": "black",
+                    "weiß": "white",
+                    "blau": "blue",
+                    "grün": "lime",
+                    "gelb": "yellow",
+                    "rot": "red",
+                    "grau": "gray",
+                    "hellgrau": "lightgray",
+                    "rosa": "pink",
+                    "pink": "pink",
+                    "lila": "violet",
+                    "violet": "violet",
+                    "orange": "orange"
+                },
+                append: ""
+            },
+            "umrandungsfarbe": {
+                name: "border-color",
+                type: "style",
+                values: {
+                    "schwarz": "black",
+                    "weiß": "white",
+                    "blau": "blue",
+                    "grün": "lime",
+                    "gelb": "yellow",
+                    "rot": "red",
+                    "grau": "gray",
+                    "hellgrau": "lightgray",
+                    "rosa": "pink",
+                    "pink": "pink",
+                    "lila": "violet",
+                    "violet": "violet",
+                    "orange": "orange"
+                },
+                append: ""
+            },
+            "umrandungsradius": {
+                name: "border-radius",
+                type: "style",
+                useSetAttribute: false,
+                append: ""
             }
-
         },
         operators: {
             "gleich": "==",
@@ -145,6 +521,16 @@ export class WebCompiler {
             case "erstelle":
                 if (args.length == 2) {
                     r = "let " + args[1] + ";"
+                } else if (args.length == 3) {
+                    let found = false;
+                    let varName: string;
+                    while (!found) {
+                        varName = this.randomString(64)
+                        if(!this.c.includes(varName)){
+                            found = true;
+                        }
+                    }
+                    r = `let ${varName} = document.createElement('${args[2].toLowerCase()}')`
                 } else {
                     if (args.length === 4) {
                         if (this.options.creatable[args[3].toLowerCase()]) {
@@ -163,7 +549,7 @@ export class WebCompiler {
                 break;
             case "setze":
                 if (args[2].toLowerCase() === "wert") {
-                    r = args[4] + " = " + this.getArgsInRange(args, 6, args.length);
+                    r = args[4] + " = " + "\"" + this.getArgsInRange(args, 6, args.length) + "\"";
                 } else {
                     if (this.options.settable[args[2].toLowerCase()]) {
                         if (this.options.settable[args[2].toLowerCase()].type === 'style') {
@@ -171,7 +557,7 @@ export class WebCompiler {
                                 if (this.options.settable[args[2].toLowerCase()].values[args[6].toLocaleLowerCase()]) {
                                     r = args[4] + ".style." + this.options.settable[args[2].toLowerCase()].name + " = \"" + this.options.settable[args[2].toLowerCase()].values[args[6].toLowerCase()] + this.options.settable[args[2].toLowerCase()].append + "\"";
                                 } else {
-                                    this.errorCodes.prettyPrint(4, statement)
+                                    r = args[4] + ".style." + this.options.settable[args[2].toLowerCase()].name + " = \"" + args[6].toLowerCase() + "\"";
                                 }
                             } else {
                                 r = args[4] + ".style." + this.options.settable[args[2].toLowerCase()].name + " = \"" + this.getArgsInRange(args, 6, args.length) + this.options.settable[args[2].toLowerCase()].append + "\""
