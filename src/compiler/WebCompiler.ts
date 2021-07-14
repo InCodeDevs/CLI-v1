@@ -30,12 +30,12 @@ export class WebCompiler {
                 name: "color",
                 type: "style",
                 values: {
-                    "schwarz": "\"black\"",
-                    "weiß": "\"white\"",
-                    "blau": "\"blue\"",
-                    "grün": "\"lime\"",
-                    "gelb": "\"yellow\"",
-                    "grau": "\"#333\""
+                    "schwarz": "black",
+                    "weiß": "white",
+                    "blau": "blue",
+                    "grün": "lime",
+                    "gelb": "yellow",
+                    "grau": "#333"
                 },
                 append: ""
             },
@@ -43,12 +43,12 @@ export class WebCompiler {
                 name: "backgroundColor",
                 type: "style",
                 values: {
-                    "schwarz": "\"black\"",
-                    "weiß": "\"white\"",
-                    "blau": "\"blue\"",
-                    "grün": "\"lime\"",
-                    "gelb": "\"yellow\"",
-                    "grau": "\"#333\""
+                    "schwarz": "black",
+                    "weiß": "white",
+                    "blau": "blue",
+                    "grün": "lime",
+                    "gelb": "yellow",
+                    "grau": "#333"
                 },
                 append: ""
             },
@@ -95,7 +95,11 @@ export class WebCompiler {
         }
     }
 
+    protected static c: string;
+
     static compile(code: string): string {
+
+        this.c = code;
 
         // create var for result
         let result: string = ""
@@ -130,7 +134,7 @@ export class WebCompiler {
     }
 
     protected static compileStatement(statement: string): string {
-        if(statement.startsWith("@"))
+        if (statement.startsWith("@"))
             return statement.slice(statement.indexOf("@") + 2, statement.length)
         let r = this.trimStatement(statement);
         let args = r.split(" ");
@@ -149,11 +153,11 @@ export class WebCompiler {
                             if (args[3].toLowerCase() === 'methode:' || args[3].toLowerCase() === 'methode') {
                                 r = "function " + args[1] + "()"
                             } else {
-                                this.errorCodes.prettyPrint(3)
+                                this.errorCodes.prettyPrint(3, statement)
                             }
                         }
                     } else {
-                        this.errorCodes.prettyPrint(2)
+                        this.errorCodes.prettyPrint(2, statement)
                     }
                 }
                 break;
@@ -167,7 +171,7 @@ export class WebCompiler {
                                 if (this.options.settable[args[2].toLowerCase()].values[args[6].toLocaleLowerCase()]) {
                                     r = args[4] + ".style." + this.options.settable[args[2].toLowerCase()].name + " = \"" + this.options.settable[args[2].toLowerCase()].values[args[6].toLowerCase()] + this.options.settable[args[2].toLowerCase()].append + "\"";
                                 } else {
-                                    this.errorCodes.prettyPrint(4)
+                                    this.errorCodes.prettyPrint(4, statement)
                                 }
                             } else {
                                 r = args[4] + ".style." + this.options.settable[args[2].toLowerCase()].name + " = \"" + this.getArgsInRange(args, 6, args.length) + this.options.settable[args[2].toLowerCase()].append + "\""
@@ -180,7 +184,7 @@ export class WebCompiler {
                             }
                         }
                     } else {
-                        this.errorCodes.prettyPrint(3)
+                        this.errorCodes.prettyPrint(3, statement)
                     }
                 }
                 break
@@ -188,7 +192,7 @@ export class WebCompiler {
                 if (args.length === 5) {
                     r = args[3] + "()"
                 } else {
-                    this.errorCodes.prettyPrint(2)
+                    this.errorCodes.prettyPrint(2, statement)
                     console.log("Missing KeyWord: als. In statement: " + JSON.stringify(statement))
                 }
                 break;
@@ -199,21 +203,29 @@ export class WebCompiler {
                         parentElement = "document.body";
                     r = parentElement + ".appendChild(" + args[1] + ")"
                 } else {
-                    this.errorCodes.prettyPrint(2)
+                    this.errorCodes.prettyPrint(2, statement)
                 }
                 break;
             case "wiederhole":
                 if (args.length === 3) {
-                    r = "for(let i = 0; i < " + args[1] + "; i++)"
+                    let found = false;
+                    let varName: string;
+                    while (!found) {
+                        varName = this.randomString(64)
+                        if(!this.c.includes(varName)){
+                            found = true;
+                        }
+                    }
+                    r = `for(let ${varName} = 0; ${varName} < ${args[1]} ; ${varName}++)`
                 } else {
                     if (args.length === 6) {
                         if (this.options.operators[args[3]]) {
                             r = "while(" + args[2] + " " + this.options.operators[args[3].toLowerCase()] + " " + args[4] + ")"
                         } else {
-                            this.errorCodes.prettyPrint(5)
+                            this.errorCodes.prettyPrint(5, statement)
                         }
                     } else {
-                        this.errorCodes.prettyPrint(2)
+                        this.errorCodes.prettyPrint(2, statement)
                     }
                 }
                 break;
@@ -222,7 +234,7 @@ export class WebCompiler {
                     if (this.options.operators[args[2]]) {
                         r = "if(" + args[1] + " " + this.options.operators[args[2].toLowerCase()] + " " + this.getArgsInRange(args, 3, args.length - 1) + ")"
                     } else {
-                        this.errorCodes.prettyPrint(5)
+                        this.errorCodes.prettyPrint(5, statement)
                     }
                 } else {
                     if (args.length === 7) {
@@ -231,10 +243,10 @@ export class WebCompiler {
                             r = args[1] + ".setAttribute('" + this.options.events[args[2].toLowerCase()] + "', '" + args[5] + "()')"
                         } else {
                             console.log(args[2])
-                            this.errorCodes.prettyPrint(6)
+                            this.errorCodes.prettyPrint(6, statement)
                         }
                     } else {
-                        this.errorCodes.prettyPrint(2)
+                        this.errorCodes.prettyPrint(2, statement)
                     }
                 }
                 break;
@@ -246,10 +258,10 @@ export class WebCompiler {
                         if (this.options.operators[args[3]]) {
                             r = "else if(" + args[2] + " " + this.options.operators[args[3].toLowerCase()] + " " + args[4] + ")";
                         } else {
-                            this.errorCodes.prettyPrint(5)
+                            this.errorCodes.prettyPrint(5, statement)
                         }
                     } else {
-                        this.errorCodes.prettyPrint(2)
+                        this.errorCodes.prettyPrint(2, statement)
                     }
                 }
                 break;
@@ -260,22 +272,22 @@ export class WebCompiler {
                     } else if (args[args.length - 2].toLowerCase() === "dialogbox") {
                         r = "alert(" + this.getArgsInRange(args, 1, args.length - 4) + ")"
                     } else {
-                        this.errorCodes.prettyPrint(3)
+                        this.errorCodes.prettyPrint(3, statement)
                     }
                 } else {
-                    this.errorCodes.prettyPrint(2)
+                    this.errorCodes.prettyPrint(2, statement)
                 }
                 break;
             case "frage":
                 if (args.length >= 8) {
                     r = args[args.length - 1] + " = prompt(" + this.getArgsInRange(args, 1, args.length - 6) + ")"
                 } else {
-                    this.errorCodes.prettyPrint(2)
+                    this.errorCodes.prettyPrint(2, statement)
                 }
                 break;
             default:
                 console.log("KeyWord: " + args[0] + ". In statement: " + JSON.stringify(statement));
-                this.errorCodes.prettyPrint(1)
+                this.errorCodes.prettyPrint(2, statement)
 
         }
 
@@ -295,6 +307,17 @@ export class WebCompiler {
             x.push(s[i]);
         }
         return x.join(" ");
+    }
+
+    protected static randomString(length: number = 32) {
+        var result = '__';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() *
+                charactersLength));
+        }
+        return result;
     }
 
 }

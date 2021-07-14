@@ -50,7 +50,10 @@ export class ErrorCodes {
         return this.codes[code].helpLink || "Help link was not found"
     }
 
-    prettyPrint(code: number){
+    prettyPrint(code: number, expression: string){
+        if(expression != ""){
+            console.log('Error in statement: ' + expression)
+        }
         console.log("error: ic-" + code + ": " + this.getDescription("ic-" + code) + ". please visit " + this.getHelpLink("ic-" + code) + " for help")
         process.exit(1)
     }

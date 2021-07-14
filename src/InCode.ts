@@ -50,7 +50,7 @@ if (optionParser.hasOption("help")) {
 }
 
 if (process.argv[process.argv.length - 1].startsWith(optionParser.optionStart) || process.argv.length == 2) {
-    errorCodes.prettyPrint(0);
+    errorCodes.prettyPrint(0, "");
     process.exit(1)
 } else {
     let p: string = "";
