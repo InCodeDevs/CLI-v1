@@ -2,6 +2,7 @@
  * @author Ben Siebert
  * @copyright 2018-2021 Ben Siebert. All rights reserved.
  */
+import {WebCompiler} from "./WebCompiler";
 
 export class Compiler {
 
@@ -30,7 +31,7 @@ export class Compiler {
             // get the current expression
             let expression = expressions[i]
 
-            if (!expression.startsWith("//") && !expression.startsWith("@")) {
+            if (!WebCompiler.trimStatement(expression).startsWith("//") && !WebCompiler.trimStatement(expression).trim().startsWith("@")) {
 
                 // check if the expression is not \r
                 if (expression != "\r" && !ignoredLines.includes(i)) {
@@ -102,7 +103,7 @@ export class Compiler {
                     }
                 }
             } else {
-                if(expression.startsWith("@")){
+                if(!WebCompiler.trimStatement(expression).startsWith("@")){
                     codeBlocks.push({
                         statement: expression,
                         line: i,
@@ -112,6 +113,7 @@ export class Compiler {
                 }
             }
         }
+
         return codeBlocks
     }
 

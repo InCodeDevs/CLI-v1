@@ -77,7 +77,7 @@ export class WebCompiler {
                 append: ""
             },
             "textdekoration": {
-                name: "text-decoration",
+                name: "textDecoration",
                 type: "style",
                 values: {
                     "unterstrichen": "underline",
@@ -90,7 +90,7 @@ export class WebCompiler {
                 append: ""
             },
             "textausrichtung": {
-                name: "text-align",
+                name: "textAlign",
                 type: "style",
                 values: {
                     "links": "left",
@@ -102,7 +102,7 @@ export class WebCompiler {
                 append: ""
             },
             "schriftstil": {
-                name: "text-decoration",
+                name: "textDecoration",
                 type: "style",
                 values: {
                     "unterstrichen": "underline",
@@ -124,31 +124,31 @@ export class WebCompiler {
                 }
             },
             "schriftart": {
-                name: "font-family",
+                name: "fontFamily",
                 type: "style",
                 useSetAttribute: false,
                 append: ""
             },
             "abstand-oben": {
-                name: "margin-top",
+                name: "marginTop",
                 type: "style",
                 useSetAttribute: false,
                 append: "px"
             },
             "abstand-rechts": {
-                name: "margin-right",
+                name: "marginRight",
                 type: "style",
                 useSetAttribute: false,
                 append: "px"
             },
             "abstand-unten": {
-                name: "margin-bottom",
+                name: "marginBottom",
                 type: "style",
                 useSetAttribute: false,
                 append: "px"
             },
             "abstand-links": {
-                name: "margin-left",
+                name: "marginLeft",
                 type: "style",
                 useSetAttribute: false,
                 append: "px"
@@ -160,25 +160,25 @@ export class WebCompiler {
                 append: "px"
             },
             "innerer-abstand-oben": {
-                name: "padding-top",
+                name: "paddingTop",
                 type: "style",
                 useSetAttribute: false,
                 append: "px"
             },
             "innerer-abstand-rechts": {
-                name: "padding-right",
+                name: "paddingRight",
                 type: "style",
                 useSetAttribute: false,
                 append: "px"
             },
             "innerer-abstand-unten": {
-                name: "padding-bottom",
+                name: "paddingBottom",
                 type: "style",
                 useSetAttribute: false,
                 append: "px"
             },
             "innerer-abstand-links": {
-                name: "padding-left",
+                name: "paddingLeft",
                 type: "style",
                 useSetAttribute: false,
                 append: "px"
@@ -241,37 +241,37 @@ export class WebCompiler {
                 append: ""
             },
             "umrandungsbreite-oben": {
-                name: "border-top-width",
+                name: "borderTopWidth",
                 type: "style",
                 useSetAttribute: false,
                 append: "px"
             },
             "umrandungsbreite-rechts": {
-                name: "border-right-width",
+                name: "borderRightWidth",
                 type: "style",
                 useSetAttribute: false,
                 append: "px"
             },
             "umrandungsbreite-unten": {
-                name: "border-bottom-width",
+                name: "borderBottomWidth",
                 type: "style",
                 useSetAttribute: false,
                 append: "px"
             },
             "umrandungsbreite-links": {
-                name: "border-left-width",
+                name: "borderLeftWidth",
                 type: "style",
                 useSetAttribute: false,
                 append: "px"
             },
             "umrandungsbreite": {
-                name: "border-width",
+                name: "borderWidth",
                 type: "style",
                 useSetAttribute: false,
                 append: "px"
             },
             "umrandungsstil-oben": {
-                name: "border-top-style",
+                name: "borderTopStyle",
                 type: "style",
                 values: {
                     "nichts": "none",
@@ -287,7 +287,7 @@ export class WebCompiler {
                 }
             },
             "umrandungsstil-rechts": {
-                name: "border-right-style",
+                name: "borderRightStyle",
                 type: "style",
                 values: {
                     "nichts": "none",
@@ -303,7 +303,7 @@ export class WebCompiler {
                 }
             },
             "umrandungsstil-unten": {
-                name: "border-bottom-style",
+                name: "borderBottomStyle",
                 type: "style",
                 values: {
                     "nichts": "none",
@@ -319,7 +319,7 @@ export class WebCompiler {
                 }
             },
             "umrandungsstil-links": {
-                name: "border-left-style",
+                name: "borderLeftStyle",
                 type: "style",
                 values: {
                     "nichts": "none",
@@ -335,7 +335,7 @@ export class WebCompiler {
                 }
             },
             "umrandungsstil": {
-                name: "border-style",
+                name: "borderStyle",
                 type: "style",
                 values: {
                     "nichts": "none",
@@ -351,7 +351,7 @@ export class WebCompiler {
                 }
             },
             "umrandungsfarbe-oben": {
-                name: "border-top-color",
+                name: "borderTopColor",
                 type: "style",
                 values: {
                     "schwarz": "black",
@@ -371,7 +371,7 @@ export class WebCompiler {
                 append: ""
             },
             "umrandungsfarbe-rechts": {
-                name: "border-right-color",
+                name: "borderRightColor",
                 type: "style",
                 values: {
                     "schwarz": "black",
@@ -391,7 +391,7 @@ export class WebCompiler {
                 append: ""
             },
             "umrandungsfarbe-unten": {
-                name: "border-bottom-color",
+                name: "borderBottomColor",
                 type: "style",
                 values: {
                     "schwarz": "black",
@@ -411,7 +411,7 @@ export class WebCompiler {
                 append: ""
             },
             "umrandungsfarbe-links": {
-                name: "border-left-color",
+                name: "borderLeftColor",
                 type: "style",
                 values: {
                     "schwarz": "black",
@@ -431,7 +431,7 @@ export class WebCompiler {
                 append: ""
             },
             "umrandungsfarbe": {
-                name: "border-color",
+                name: "borderColor",
                 type: "style",
                 values: {
                     "schwarz": "black",
@@ -451,7 +451,7 @@ export class WebCompiler {
                 append: ""
             },
             "umrandungsradius": {
-                name: "border-radius",
+                name: "borderRadius",
                 type: "style",
                 useSetAttribute: false,
                 append: ""
@@ -510,8 +510,8 @@ export class WebCompiler {
     }
 
     protected static compileStatement(statement: string): string {
-        if (statement.startsWith("@"))
-            return statement.slice(statement.indexOf("@") + 2, statement.length)
+        if (this.trimStatement(statement).startsWith("@"))
+            return this.trimStatement(statement).slice(statement.indexOf("@") + 1, statement.length)
         let r = this.trimStatement(statement);
         let args = r.split(" ");
 
@@ -540,10 +540,14 @@ export class WebCompiler {
                                 r = "function " + args[1] + "()"
                             } else {
                                 this.errorCodes.prettyPrint(3, statement)
+                                console.log("A line was ignored because it contained errors.")
+                                r = "";
                             }
                         }
                     } else {
                         this.errorCodes.prettyPrint(2, statement)
+                        console.log("A line was ignored because it contained errors.")
+                        r = "";
                     }
                 }
                 break;
@@ -571,6 +575,8 @@ export class WebCompiler {
                         }
                     } else {
                         this.errorCodes.prettyPrint(3, statement)
+                        console.log("A line was ignored because it contained errors.")
+                        r = "";
                     }
                 }
                 break
@@ -580,6 +586,8 @@ export class WebCompiler {
                 } else {
                     this.errorCodes.prettyPrint(2, statement)
                     console.log("Missing KeyWord: als. In statement: " + JSON.stringify(statement))
+                    console.log("A line was ignored because it contained errors.")
+                    r = "";
                 }
                 break;
             case "füge":
@@ -590,6 +598,8 @@ export class WebCompiler {
                     r = parentElement + ".appendChild(" + args[1] + ")"
                 } else {
                     this.errorCodes.prettyPrint(2, statement)
+                    console.log("A line was ignored because it contained errors.")
+                    r = "";
                 }
                 break;
             case "wiederhole":
@@ -609,9 +619,13 @@ export class WebCompiler {
                             r = "while(" + args[2] + " " + this.options.operators[args[3].toLowerCase()] + " " + args[4] + ")"
                         } else {
                             this.errorCodes.prettyPrint(5, statement)
+                            console.log("A line was ignored because it contained errors.")
+                            r = "";
                         }
                     } else {
                         this.errorCodes.prettyPrint(2, statement)
+                        console.log("A line was ignored because it contained errors.")
+                        r = "";
                     }
                 }
                 break;
@@ -621,6 +635,8 @@ export class WebCompiler {
                         r = "if(" + args[1] + " " + this.options.operators[args[2].toLowerCase()] + " " + this.getArgsInRange(args, 3, args.length - 1) + ")"
                     } else {
                         this.errorCodes.prettyPrint(5, statement)
+                        console.log("A line was ignored because it contained errors.")
+                        r = "";
                     }
                 } else {
                     if (args.length === 7) {
@@ -630,9 +646,13 @@ export class WebCompiler {
                         } else {
                             console.log(args[2])
                             this.errorCodes.prettyPrint(6, statement)
+                            console.log("A line was ignored because it contained errors.")
+                            r = "";
                         }
                     } else {
                         this.errorCodes.prettyPrint(2, statement)
+                        console.log("A line was ignored because it contained errors.")
+                        r = "";
                     }
                 }
                 break;
@@ -645,9 +665,13 @@ export class WebCompiler {
                             r = "else if(" + args[2] + " " + this.options.operators[args[3].toLowerCase()] + " " + args[4] + ")";
                         } else {
                             this.errorCodes.prettyPrint(5, statement)
+                            console.log("A line was ignored because it contained errors.")
+                            r = "";
                         }
                     } else {
                         this.errorCodes.prettyPrint(2, statement)
+                        console.log("A line was ignored because it contained errors.")
+                        r = "";
                     }
                 }
                 break;
@@ -659,9 +683,13 @@ export class WebCompiler {
                         r = "alert(" + this.getArgsInRange(args, 1, args.length - 4) + ")"
                     } else {
                         this.errorCodes.prettyPrint(3, statement)
+                        console.log("A line was ignored because it contained errors.")
+                        r = "";
                     }
                 } else {
                     this.errorCodes.prettyPrint(2, statement)
+                    console.log("A line was ignored because it contained errors.")
+                    r = "";
                 }
                 break;
             case "frage":
@@ -669,19 +697,24 @@ export class WebCompiler {
                     r = args[args.length - 1] + " = prompt(" + this.getArgsInRange(args, 1, args.length - 6) + ")"
                 } else {
                     this.errorCodes.prettyPrint(2, statement)
+                    console.log("A line was ignored because it contained errors.")
+                    r = "";
                 }
                 break;
             default:
-                console.log("KeyWord: " + args[0] + ". In statement: " + JSON.stringify(statement));
-                this.errorCodes.prettyPrint(2, statement)
-
+                if(args[0] != "//"){
+                    console.log("KeyWord: " + args[0] + ". In statement: " + JSON.stringify(statement));
+                    this.errorCodes.prettyPrint(2, statement)
+                    console.log("A line was ignored because it contained errors.")
+                    r = "";
+                }
         }
 
         return r + "\n"
     }
 
 
-    protected static trimStatement(statement: string): string {
+    public static trimStatement(statement: string): string {
         statement = statement.replace(/\t/g, '');
         statement = statement.trim()
         return statement

@@ -3,10 +3,6 @@
  * @copyright 2018-2021 Ben Siebert. All rights reserved.
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
-import {Logger} from "./Logger";
-
 export class ErrorCodes {
 
     private baseHelpURL = "http://incode.senos.xyz/help/e/"
@@ -55,6 +51,5 @@ export class ErrorCodes {
             console.log('Error in statement: ' + expression)
         }
         console.log("error: ic-" + code + ": " + this.getDescription("ic-" + code) + ". please visit " + this.getHelpLink("ic-" + code) + " for help")
-        process.exit(1)
     }
 }
