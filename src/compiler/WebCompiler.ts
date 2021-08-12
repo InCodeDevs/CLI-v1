@@ -50,7 +50,7 @@ export class WebCompiler {
                 },
                 append: ""
             },
-            "hintergrungfarbe": {
+            "hintergrundfarbe": {
                 name: "backgroundColor",
                 type: "style",
                 values: {
