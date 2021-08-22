@@ -1,7 +1,7 @@
 {
   "name": "incode",
   "version": "1.0.0",
-  "description": "The InCode Programming Language",
+  "description": "The InCode Programming Language CLI Interface",
   "main": "dist/InCode.js",
   "scripts": {
     "start": "npm run buildTS && node .",
