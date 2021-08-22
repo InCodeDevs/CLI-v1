@@ -3,60 +3,35 @@
  * @copyright 2018-2021 Ben Siebert. All rights reserved.
  */
 
-import {Logger} from 'incode-language/dist/util/Logger';
-import {OptionParser} from "./util/OptionParser";
-import {ErrorCodes} from "incode-language/dist/util/ErrorCodes";
+const {program} = require('commander');
+const fs = require('fs');
 import {WebCompiler} from "incode-language/dist/compiler/WebCompiler";
-import * as fs from "fs";
-import * as path from "path";
 
-// fix __dirname (nexe issue #405)
-let DIRNAME = path.dirname(process.execPath)
+program.version('1.0.0')
 
-let logger: Logger = new Logger();
-let optionParser: OptionParser = new OptionParser(process.argv);
-let errorCodes: ErrorCodes = new ErrorCodes();
+program
+    .requiredOption("-o, --output <file>", 'The output file')
+    .option('-s, --small', 'Minify the output file', false)
+    .requiredOption('-i, --input <file>', 'The input file');
 
-optionParser.setOptionStart("--");
+program.parse(process.argv);
 
-logger.setLogStatus(
-    !optionParser.hasOption("disableLogDebug"),
-    !optionParser.hasOption("disableLogWarnings"),
-    !optionParser.hasOption("disableLogErrors")
-)
+const options = program.opts();
 
-WebCompiler.logger = logger;
+if (fs.existsSync(options.input)) {
+    let code = fs.readFileSync(options.input).toString();
 
-if (optionParser.hasOption("help")) {
-    console.log("\n" +
-        "\n" +
-        " ___  ________   ________  ________  ________  _______      \n" +
-        "|\\  \\|\\   ___  \\|\\   ____\\|\\   __  \\|\\   ___ \\|\\  ___ \\     \n" +
-        "\\ \\  \\ \\  \\\\ \\  \\ \\  \\___|\\ \\  \\|\\  \\ \\  \\_|\\ \\ \\   __/|    \n" +
-        " \\ \\  \\ \\  \\\\ \\  \\ \\  \\    \\ \\  \\\\\\  \\ \\  \\ \\\\ \\ \\  \\_|/__  \n" +
-        "  \\ \\  \\ \\  \\\\ \\  \\ \\  \\____\\ \\  \\\\\\  \\ \\  \\_\\\\ \\ \\  \\_|\\ \\ \n" +
-        "   \\ \\__\\ \\__\\\\ \\__\\ \\_______\\ \\_______\\ \\_______\\ \\_______\\\n" +
-        "    \\|__|\\|__| \\|__|\\|_______|\\|_______|\\|_______|\\|_______|\n" +
-        "v1.0.0\n" +
-        "\n" +
-        "Made by Ben Siebert and Lukas Birke\n" +
-        "\n")
-    console.log("incode [options] \"<absolutePathToFile>\"")
-    process.exit(0)
-} else if (optionParser.hasOption("version")) {
-    console.log("v1.0.0")
-    process.exit(0)
-}
+    let e = WebCompiler.compile(code);
 
-if (process.argv[process.argv.length - 1].startsWith(optionParser.optionStart) || process.argv.length == 2) {
-    errorCodes.prettyPrint(0, "");
-    process.exit(1)
-} else {
-    let p: string = "";
-    for (let i = 2; i < process.argv.length; i++) {
-        p += process.argv[i];
-        if((i + 1) < process.argv.length)
-            p += " "
+    if (options.small) {
+        let t = '';
+        e.split("\n").forEach(x => {
+            t+=x+";";
+        });
+        e = t;
     }
-    WebCompiler.compile(fs.readFileSync(process.argv[process.argv.length - 1]).toString())
+
+    fs.writeFileSync(options.output, e);
+} else {
+    console.log('error: the file does not exist!')
 }
