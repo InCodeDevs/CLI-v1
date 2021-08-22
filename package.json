@@ -3,15 +3,23 @@
   "version": "1.0.0",
   "description": "The InCode Programming Language CLI Interface",
   "main": "dist/InCode.js",
+  "bin": "dist/InCode.js",
   "scripts": {
     "start": "npm run buildTS && node .",
     "buildTS": "tsc --project .",
-    "build": "npm run buildTS && nexe . --build --output incode",
-    "test": "npm run buildWin && incode.exe examples\\web.ic"
+    "build": "npm run buildTS && pkg .",
+    "test": "npm run build && incode.exe examples\\web.ic",
+    "install-dependencies": "npm i --registry http://npm.craftions.net",
   },
   "author": "The InCode Developers",
   "license": "GPL-3.0-only",
   "devDependencies": {
-    "@types/node": "^15.14.0"
+    "@types/node": "^15.14.9",
+    "nexe": "^4.0.0-beta.18",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "incode-language": "^1.0.1",
+    "pkg": "^5.3.1"
   }
 }
