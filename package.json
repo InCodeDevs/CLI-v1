@@ -1,5 +1,5 @@
 {
-  "name": "incode",
+  "name": "incode-cli",
   "version": "1.0.0",
   "description": "The InCode Programming Language CLI Interface",
   "main": "dist/InCode.js",
