@@ -4,7 +4,7 @@
  * @licence GPLv3
  */
 
-import {Logger} from "../util/Logger"
+import {Logger} from "incode-language/dist/util/Logger"
 import {Compiler} from "./Compiler";
 import {ErrorCodes} from "../util/ErrorCodes";
 

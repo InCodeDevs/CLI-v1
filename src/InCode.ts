@@ -3,11 +3,10 @@
  * @copyright 2018-2021 Ben Siebert. All rights reserved.
  */
 
-import {Logger} from './util/Logger';
+import {Logger} from 'incode-language/dist/util/Logger';
 import {OptionParser} from "./util/OptionParser";
-import {ErrorCodes} from "./util/ErrorCodes";
-import {WebCompiler} from "./compiler/WebCompiler";
-import {StringUtil} from "./util/StringUtil";
+import {ErrorCodes} from "incode-language/dist/util/ErrorCodes";
+import {WebCompiler} from "incode-language/dist/compiler/WebCompiler";
 import * as fs from "fs";
 import * as path from "path";
 
