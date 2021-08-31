@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/InCodeDevs/CLI#readme",
   "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^8.1.0",
     "incode-language": "^1.0.5"
   }
 }
