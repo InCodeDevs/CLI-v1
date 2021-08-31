@@ -1,0 +1,24 @@
+{
+  "name": "incode-cli",
+  "version": "1.0.0",
+  "description": "The Official CLI for the InCode Programming Language",
+  "main": "index.js",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InCodeDevs/CLI.git"
+  },
+  "keywords": [
+    "incode",
+    "cli",
+    "incode-cli"
+  ],
+  "author": "The InCode Developers <https://github.com/InCodeDevs>",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/InCodeDevs/CLI/issues"
+  },
+  "homepage": "https://github.com/InCodeDevs/CLI#readme"
+}
