@@ -2,9 +2,10 @@
   "name": "incode-cli",
   "version": "1.0.0",
   "description": "The Official CLI for the InCode Programming Language",
-  "main": "index.js",
-  "scripts": {
-    
+  "main": "src/index.js",
+  "scripts": {},
+  "bin": {
+    "incode": "./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/InCodeDevs/CLI/issues"
   },
-  "homepage": "https://github.com/InCodeDevs/CLI#readme"
+  "homepage": "https://github.com/InCodeDevs/CLI#readme",
+  "dependencies": {
+    "incode-language": "^1.0.5"
+  }
 }
