@@ -4,6 +4,9 @@
   "description": "The Official CLI for the InCode Programming Language",
   "main": "src/index.js",
   "scripts": {},
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "incode": "./src/index.js"
   },
