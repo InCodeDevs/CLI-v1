@@ -4,7 +4,7 @@ const chalk = require('chalk');
 const { program } = require('commander')
 const fs = require('fs');
 const path = require('path');
-const {WebCompiler} = require('@incodelang/language/dist/compiler/WebCompiler');
+const {WebCompiler} = require('@incodelang/language');
 const { disableConsole, enableConsole } = require('./util');
 
 program.version("2.0.0");
