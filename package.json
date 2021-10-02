@@ -1,5 +1,5 @@
 {
-  "name": "incode-cli",
+  "name": "@incodelang/cli",
   "version": "2.0.1",
   "description": "The Official CLI for the InCode Programming Language",
   "main": "src/index.js",
@@ -25,6 +25,6 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^8.1.0",
-    "incode-language": "^1.0.5"
+    "@incodelang/language": "^1.0.12"
   }
 }
